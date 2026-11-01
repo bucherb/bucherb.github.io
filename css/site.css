@@ -19,8 +19,10 @@ a:hover { text-decoration-thickness: 2px; }
 a:focus-visible { outline: 3px solid var(--maize); outline-offset: 2px; box-shadow: 0 0 0 5px var(--blue); }
 
 /* The banner's dark left side holds the name; the M sits to its right. */
-.hero { display: flex; align-items: center; min-height: max(20rem, 25vw); color: #fff; background: var(--night) url(../images/manifold-banner.jpg) right center / cover no-repeat; }
-.hero-in { width: 100%; max-width: 64rem; margin: 0 auto; padding: 2rem 1.5rem; }
+.hero { position: relative; overflow: hidden; display: flex; align-items: center; min-height: max(20rem, 25vw); color: #fff; background: var(--night) url(../images/manifold-banner.jpg) right center / cover no-repeat; }
+.hero.live { background: radial-gradient(60rem 34rem at 68% 45%, #0b2a63 0%, #04173a 48%, #020d24 100%); }
+.manifold { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.hero-in { position: relative; width: 100%; max-width: 64rem; margin: 0 auto; padding: 2rem 1.5rem; }
 .hero h1 { max-width: 6em; font-size: clamp(3rem, 6vw, 4.75rem); font-weight: 800; letter-spacing: -0.02em; line-height: 0.98; }
 .hero p { max-width: 24rem; margin: 0.9rem 0 1.4rem; font-size: 1.15rem; line-height: 1.4; }
 .button { display: inline-block; padding: 0.65rem 1.1rem; border-radius: 0.3rem; color: var(--blue); background: var(--maize); font-weight: 700; text-decoration: none; }
@@ -47,6 +49,8 @@ main { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem 4rem; }
 /* Narrow screens crop to the M and put the name below it. */
 @media (max-width: 1100px) {
   .hero { display: block; min-height: 0; padding-top: 42vw; background-image: linear-gradient(to bottom, transparent 39vw, var(--night) 42vw), url(../images/manifold-banner.jpg); background-size: 100% 100%, auto 42vw; background-position: 0 0, 80% 0; }
+  .hero.live { background: radial-gradient(60rem 34rem at 50% 20vw, #0b2a63 0%, #04173a 48%, #020d24 100%); }
+  .manifold { height: 42vw; }
   .hero-in { padding-top: 1rem; padding-bottom: 2.25rem; }
   .hero h1 { max-width: none; }
   .hero p { max-width: none; }
@@ -59,6 +63,7 @@ main { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem 4rem; }
   .term { text-align: right; }
 }
 @media print {
-  .hero { min-height: 0; padding: 0; color: var(--ink); background: none; }
+  .hero, .hero.live { min-height: 0; padding: 0; color: var(--ink); background: none; }
+  .manifold { display: none; }
   .button { display: none; }
 }
