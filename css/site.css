@@ -2,7 +2,6 @@
 :root {
   --blue: #00274c;
   --maize: #ffcb05;
-  --night: #04173a;
   --ink: #12263a;
   --ink-soft: #4a5f73;
   --rule: #cfdde7;
@@ -18,18 +17,14 @@ a { color: var(--blue); text-underline-offset: 0.18em; }
 a:hover { text-decoration-thickness: 2px; }
 a:focus-visible { outline: 3px solid var(--maize); outline-offset: 2px; box-shadow: 0 0 0 5px var(--blue); }
 
-/* The banner's dark left side holds the name; the M sits to its right. */
-.hero { position: relative; overflow: hidden; display: flex; align-items: center; min-height: max(20rem, 25vw); color: #fff; background: var(--night) url(../images/manifold-banner.jpg) right center / cover no-repeat; }
-.hero.live { background: radial-gradient(60rem 34rem at 68% 45%, #0b2a63 0%, #04173a 48%, #020d24 100%); }
-.manifold { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.hero-in { position: relative; width: 100%; max-width: 64rem; margin: 0 auto; padding: 2rem 1.5rem; }
-.hero h1 { max-width: 6em; font-size: clamp(3rem, 6vw, 4.75rem); font-weight: 800; letter-spacing: -0.02em; line-height: 0.98; }
-.hero p { max-width: 24rem; margin: 0.9rem 0 1.4rem; font-size: 1.15rem; line-height: 1.4; }
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; max-width: 64rem; margin: 0 auto; padding: 2.5rem 1.5rem 0; }
+.top h1 { color: var(--blue); font-size: clamp(2.25rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.02em; }
+.top p { margin: 0.4rem 0 0; color: var(--ink-soft); font-size: 1.15rem; line-height: 1.4; }
 .button { display: inline-block; padding: 0.65rem 1.1rem; border-radius: 0.3rem; color: var(--blue); background: var(--maize); font-weight: 700; text-decoration: none; }
-.button:hover { background: #fff; }
+.button:hover { color: #fff; background: var(--blue); }
 
 main { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem 4rem; }
-.row { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); gap: 3rem; padding: 3.5rem 0; }
+.row { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); gap: 3rem; padding: 2.5rem 0; }
 .row + .row { border-top: 1px solid var(--rule); padding-top: 2.5rem; }
 .portrait { display: block; width: 100%; height: auto; border-radius: 0.3rem; }
 .prose { max-width: 42rem; }
@@ -46,15 +41,6 @@ main { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem 4rem; }
 .code, .term { color: var(--ink-soft); white-space: nowrap; }
 .term { text-align: right; }
 
-/* Narrow screens crop to the M and put the name below it. */
-@media (max-width: 1100px) {
-  .hero { display: block; min-height: 0; padding-top: 42vw; background-image: linear-gradient(to bottom, transparent 39vw, var(--night) 42vw), url(../images/manifold-banner.jpg); background-size: 100% 100%, auto 42vw; background-position: 0 0, 80% 0; }
-  .hero.live { background: radial-gradient(60rem 34rem at 50% 20vw, #0b2a63 0%, #04173a 48%, #020d24 100%); }
-  .manifold { height: 42vw; }
-  .hero-in { padding-top: 1rem; padding-bottom: 2.25rem; }
-  .hero h1 { max-width: none; }
-  .hero p { max-width: none; }
-}
 @media (max-width: 760px) {
   .row { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 0; }
   .portrait { max-width: 12rem; }
@@ -63,7 +49,5 @@ main { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem 4rem; }
   .term { text-align: right; }
 }
 @media print {
-  .hero, .hero.live { min-height: 0; padding: 0; color: var(--ink); background: none; }
-  .manifold { display: none; }
   .button { display: none; }
 }
