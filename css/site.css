@@ -1,0 +1,64 @@
+/* Shares its fonts and U-M blue and maize with the lab site. */
+:root {
+  --blue: #00274c;
+  --maize: #ffcb05;
+  --night: #04173a;
+  --ink: #12263a;
+  --ink-soft: #4a5f73;
+  --rule: #cfdde7;
+  --display: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", sans-serif;
+  --rail: 15rem;
+}
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: #fff; font: 400 1.0625rem/1.65 var(--body); }
+h1, h2 { font-family: var(--display); line-height: 1.05; margin: 0; }
+h2 { color: var(--blue); font-size: 1.75rem; font-weight: 700; }
+a { color: var(--blue); text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 3px solid var(--maize); outline-offset: 2px; box-shadow: 0 0 0 5px var(--blue); }
+
+/* The banner's dark left side holds the name; the M sits to its right. */
+.hero { display: flex; align-items: center; min-height: max(20rem, 25vw); color: #fff; background: var(--night) url(../images/manifold-banner.jpg) right center / cover no-repeat; }
+.hero-in { width: 100%; max-width: 64rem; margin: 0 auto; padding: 2rem 1.5rem; }
+.hero h1 { max-width: 6em; font-size: clamp(3rem, 6vw, 4.75rem); font-weight: 800; letter-spacing: -0.02em; line-height: 0.98; }
+.hero p { max-width: 24rem; margin: 0.9rem 0 1.4rem; font-size: 1.15rem; line-height: 1.4; }
+.button { display: inline-block; padding: 0.65rem 1.1rem; border-radius: 0.3rem; color: var(--blue); background: var(--maize); font-weight: 700; text-decoration: none; }
+.button:hover { background: #fff; }
+
+main { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem 4rem; }
+.row { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); gap: 3rem; padding: 3.5rem 0; }
+.row + .row { border-top: 1px solid var(--rule); padding-top: 2.5rem; }
+.portrait { display: block; width: 100%; height: auto; border-radius: 0.3rem; }
+.prose { max-width: 42rem; }
+.prose h2 { margin-bottom: 0.9rem; }
+.prose p { margin: 0 0 1rem; }
+
+.links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; margin: 1.5rem 0 0; padding: 0; list-style: none; font-weight: 700; }
+
+.courses { margin: 0; padding: 0; list-style: none; }
+.courses li { display: grid; grid-template-columns: minmax(0, 1fr) auto 11rem; gap: 1.25rem; align-items: baseline; padding: 0.85rem 0; border-bottom: 1px solid var(--rule); }
+.courses li:first-child { padding-top: 0; }
+.courses li:last-child { border-bottom: 0; }
+.courses a { font-size: 1.15rem; font-weight: 700; }
+.code, .term { color: var(--ink-soft); white-space: nowrap; }
+.term { text-align: right; }
+
+/* Narrow screens crop to the M and put the name below it. */
+@media (max-width: 1100px) {
+  .hero { display: block; min-height: 0; padding-top: 42vw; background-image: linear-gradient(to bottom, transparent 39vw, var(--night) 42vw), url(../images/manifold-banner.jpg); background-size: 100% 100%, auto 42vw; background-position: 0 0, 80% 0; }
+  .hero-in { padding-top: 1rem; padding-bottom: 2.25rem; }
+  .hero h1 { max-width: none; }
+  .hero p { max-width: none; }
+}
+@media (max-width: 760px) {
+  .row { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 0; }
+  .portrait { max-width: 12rem; }
+  .courses li { grid-template-columns: 1fr auto; gap: 0.1rem 1rem; }
+  .courses a { grid-column: 1 / -1; }
+  .term { text-align: right; }
+}
+@media print {
+  .hero { min-height: 0; padding: 0; color: var(--ink); background: none; }
+  .button { display: none; }
+}
